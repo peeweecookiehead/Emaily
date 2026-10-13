@@ -24,7 +24,7 @@ passport.use(
         proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
-        done(ip.address, null);
+        done(null, null, { message: "ip address is" });
         // User.findOne({ googleId: profile.id })
         //     .then((existingUser) => {
         //         if (existingUser) {
