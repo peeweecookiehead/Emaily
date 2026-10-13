@@ -34,6 +34,9 @@ passport.use(
                             done(null, newUser);
                         });
                 }
+            })
+            .catch((err) => {
+                done(err, null);
             });
     }
 ));
