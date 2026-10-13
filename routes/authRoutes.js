@@ -19,8 +19,4 @@ module.exports = (app) => {
     app.get('/api/current_user', (req, res, next) => {
         res.send(req.user);
     });
-
-    app.get('/api/ip', (req, res, next) => {
-        res.send(ip.address());
-    })
 };
