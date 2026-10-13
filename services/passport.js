@@ -24,21 +24,20 @@ passport.use(
         proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
-        done(null, null, { message: "ip address is" });
-        // User.findOne({ googleId: profile.id })
-        //     .then((existingUser) => {
-        //         if (existingUser) {
-        //             done(null, existingUser);
-        //         } else {
-        //             new User({ googleId: profile.id })
-        //                 .save()
-        //                 .then((newUser) => {
-        //                     done(null, newUser);
-        //                 });
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         done(err, null);
-        //     });
+        User.findOne({ googleId: profile.id })
+            .then((existingUser) => {
+                if (existingUser) {
+                    done(null, existingUser);
+                } else {
+                    new User({ googleId: profile.id })
+                        .save()
+                        .then((newUser) => {
+                            done(null, newUser);
+                        });
+                }
+            })
+            .catch((err) => {
+                done(null, null, { message: err });
+            });
     }
 ));
