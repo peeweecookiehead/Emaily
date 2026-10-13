@@ -1,5 +1,4 @@
 const passport = require('passport');
-const ip = require('ip');
 
 module.exports = (app) => {
     app.get(
